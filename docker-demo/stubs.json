@@ -1,0 +1,31 @@
+{
+  "port": 4545,
+  "protocol": "http",
+  "stubs": [{
+      "responses": [{
+        "is": {
+          "statusCode": 200,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "body": ["Australia", "Brazil", "Canada", "Chile", "China", "Ecuador", "Germany", "India", "Italy", "Singapore", "South Africa", "Spain", "Turkey", "UK", "US Central", "US East", "US West"]
+        }
+      }],
+      "predicates": [{
+        "equals": {
+          "path": "/country",
+          "method": "GET"
+        }
+      }]
+    }, {
+      "responses": [{
+        "is": {
+          "statusCode": 400,
+          "body": {
+            "code": "bad-request",
+            "message": "Bad Request"
+          }
+        }
+      }]
+    }]
+}
