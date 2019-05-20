@@ -3,12 +3,12 @@
 ## Mountebank安装
 
 1. 安装Nodejs
-`  wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz `
+> `  wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz `
 2. 安装Mountebank
-`  npm install -g mountebank `
+> `  npm install -g mountebank `
 
 3. 启动Mountebank
-`   mb `
+> `   mb `
 
 4. 创建mock服务
 ```  
@@ -40,8 +40,8 @@ curl -i -X POST -H 'Content-Type: application/json' http://localhost:2525/impost
     }'
 ```
 5. 验证mock服务
-`   curl -i -X POST -H 'Content-Type: application/json' http://localhost:4545/test --data '{"optionalField": true}' `
-`    curl -i -X POST http://localhost:4545/test --data '{"optionalField": true}' `
+> `   curl -i -X POST -H 'Content-Type: application/json' http://localhost:4545/test --data '{"optionalField": true}' `
+> `    curl -i -X POST http://localhost:4545/test --data '{"optionalField": true}' `
 
 6. 创建tcp mock
 ```    
@@ -58,11 +58,21 @@ curl -i -X POST -H 'Content-Type: application/json' http://localhost:2525/impost
     }'
 ```
 7. 验证tcp
-`    echo "Calling sayHello over binary protocol" | nc localhost 5555 `
+> `    echo "Calling sayHello over binary protocol" | nc localhost 5555 `
 
 8. 关闭mock
-`    curl -X DELETE http://localhost:2525/imposters/4545 `
-`    curl -X DELETE http://localhost:2525/imposters/5555 `
+> `    curl -X DELETE http://localhost:2525/imposters/4545 `
+> `    curl -X DELETE http://localhost:2525/imposters/5555 `
+
+
+9. 保存所有imposters 并移除所有 proxies
+`mb save ­­savefile imposters.json ­­removeProxies`
+
+10. 以指定imposters配置进行重启
+> `mb restart ­­configfile imposters.json`
+
+
+
 
 
 ***
